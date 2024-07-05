@@ -1,0 +1,1 @@
+select g1_0.id,g1_0.name,u1_0.id,u1_0.group_id,u1_0.name from group g1_0 join user u1_0 on u1_0.group_id=g1_0.id
