@@ -15,4 +15,9 @@ public class RoomService {
   public List<Room> getAllAnotherOneRequest() {
     return roomRepository.getAllAnotherOneRequest();
   }
+
+  @Transactional
+  public List<Room> getRoomsOneRequest() {
+    return roomRepository.getRoomsOneRequest();
+  }
 }

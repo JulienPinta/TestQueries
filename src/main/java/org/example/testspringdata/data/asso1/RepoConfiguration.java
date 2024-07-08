@@ -39,17 +39,15 @@ public class RepoConfiguration {
 
 
   @Bean
-  public ApplicationRunner test(UserRepository userRepository, CountryService countryService, RoomRepository roomRepository, RoomService roomService) {
+  public ApplicationRunner test(UserRepository userRepository, CountryService countryService, RoomService roomService) {
     return args -> {
       System.out.println("Will get Countries");
-      //System.out.println("And then wait for 2s");
       Instant now = Instant.now();
       countryService.printAll();
       System.out.println("TOOK "+(Instant.now().toEpochMilli() - now.toEpochMilli())+"ms to get all the countries");
-      //Thread.sleep(2000);
       System.out.println("Will get Rooms");
       now = Instant.now();
-      List<Chair> list = roomRepository.getRoomsOneRequest().stream().map(Room::getChairs).flatMap(Set::stream).toList();
+      List<Chair> list = roomService.getRoomsOneRequest().stream().map(Room::getChairs).flatMap(Set::stream).toList();
       System.out.println("Found "+list.size()+" chairs");
       System.out.println("TOOK "+(Instant.now().toEpochMilli() - now.toEpochMilli())+"ms to get all the rooms");
       System.out.println("Will get Rooms with another way");
